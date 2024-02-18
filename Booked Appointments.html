@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Booked Appointments</title>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="Generic%20form.css">
+<link rel="stylesheet" href="button.css">
+<link rel="stylesheet" href="ovalButton.css">
+
+<style>
+
+  body {
+    font-family: SpoofTrial-Regular, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  footer img {
+    width: 200px !important;
+    height: auto !important;
+  }
+
+  .appointment-past {
+    background-color: #ffcccc;
+  }
+  .appointment-upcoming {
+    background-color: #ccffcc;
+  }
+</style>
+
+</head>
+<body>
+
+<header></header>
+
+<h1>Booked Appointments</h1>
+<p>Your Appointments:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pet Name</th>
+      <th>Appointment Type</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody id="appointments-table">
+  </tbody>
+</table>
+
+<footer class="footer">
+  <img class="image2" src="pics/logo7.png" alt="Pet Society">
+  <button type="submit" class="ovalButton" onclick="goToPage('MyPets.html')">Back</button>
+</footer>
+
+<!--calling function 2- coloring passed appointments red and upcoming appointments green-->
+<script src="Function%202.js"></script>
+
+<script>
+
+  const appointments = [
+    { petName: 'Chubby', type: 'Haircut', date: '2023-01-01T10:00:00' },
+    { petName: 'Golda', type: 'Shower', date: '2023-02-15T14:30:00' },
+    { petName: 'Chubby', type: 'Checkup', date: '2023-03-20T11:45:00' },
+    { petName: 'Golda', type: 'Vaccine', date: '2023-04-10T09:00:00' },
+    { petName: 'Chubby', type: 'Shower', date: '2024-02-07T10:00:00' },
+    { petName: 'Golda', type: 'Vaccine', date: '2024-02-10T14:30:00' },
+    { petName: 'Chubby', type: 'Haircut', date: '2024-02-08T11:45:00' },
+    { petName: 'Golda', type: 'Shower', date: '2024-02-09T09:00:00' },
+    { petName: 'Chubby', type: 'Vaccine', date: '2024-04-16T10:00:00' },
+    { petName: 'Golda', type: 'Haircut', date: '2024-06-17T14:30:00' }
+
+  ];
+
+
+  // Display appointments in a table
+  const tableBody = document.getElementById('appointments-table');
+  appointments.forEach(appointment => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${appointment.petName}</td>
+                     <td>${appointment.type}</td>
+                     <td>${appointment.date}</td>`;
+    tableBody.appendChild(row);
+  });
+
+  // Call functions to display past appointments and color rows based on appointment date
+  updateAppointmentColors();
+</script>
+
+<script src="goToPage.js"></script>
+
+</body>
+</html>

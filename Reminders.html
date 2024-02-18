@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reminders</title>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="Generic%20form.css">
+<link rel="stylesheet" href="button.css">
+<link rel="stylesheet" href="ovalButton.css">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .reminderContainer {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+  }
+  .textbox {
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    resize: none;
+    font-size: 16px;
+  }
+  .dateInput {
+    margin: 5px;
+  }
+  footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  footer img {
+    width: 150px;
+    height: auto;
+  }
+
+  .deleteButton {
+    width: 80px;
+    height: 30px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+</style>
+</head>
+<body>
+
+<header></header>
+
+<h1>Reminders...</h1>
+<div class="container">
+  <div class="row">
+    <div class="reminderContainer">
+      <textarea class="textbox" placeholder="1. Chubby needs to get a shower in May!"></textarea>
+      <input type="date" class="dateInput">
+      <button class="deleteButton" onclick="deleteReminder(this)">Delete</button>
+    </div>
+    <div class="reminderContainer">
+      <textarea class="textbox" placeholder="2. Golda has to get H23 Vaccine before she turns 5"></textarea>
+      <input type="date" class="dateInput">
+      <button class="deleteButton" onclick="deleteReminder(this)">Delete</button>
+    </div>
+  </div>
+  <div class="row">
+    <button class="button" onclick="addReminder()">Add a reminder</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <img src="pics/logo5.png" alt="Pet Society">
+  <button type="submit" class="ovalButton" onclick="goToPage('PetProfile.html')">Back</button>
+</footer>
+
+<script>
+  function addReminder() {
+    var container = document.querySelector('.row');
+    var newReminderContainer = document.createElement('div');
+    newReminderContainer.className = 'reminderContainer';
+    var newTextbox = document.createElement('textarea');
+    newTextbox.className = 'textbox';
+    newTextbox.placeholder = 'Enter text here';
+    var newDateInput = document.createElement('input');
+    newDateInput.type = 'date';
+    newDateInput.className = 'dateInput';
+    var deleteButton = document.createElement('button');
+    deleteButton.className = 'deleteButton';
+    deleteButton.textContent = 'Delete';
+    deleteButton.onclick = function() { deleteReminder(this); };
+    newReminderContainer.appendChild(newTextbox);
+    newReminderContainer.appendChild(newDateInput);
+    newReminderContainer.appendChild(deleteButton);
+    container.insertBefore(newReminderContainer, container.lastChild);
+  }
+
+  function deleteReminder(button) {
+    var container = button.parentNode;
+    container.parentNode.removeChild(container);
+  }
+
+</script>
+
+<script src="goToPage.js"></script>
+
+</body>
+</html>

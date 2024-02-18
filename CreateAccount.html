@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create an Account</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Generic%20form.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="ovalButton.css">
+
+    <style>
+
+        .footer img {
+    width: 400px;
+    height: auto;
+    }
+
+    </style>
+
+</head>
+<body>
+
+    <header></header>
+
+    <form id="create-account-form">
+        <h1>Create an Account</h1>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required pattern="\d{9}" title="ID must be 9 digits">
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required pattern="[A-Za-z]+" title="First name must contain only letters">
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required pattern="[A-Za-z]+" title="Last name must contain only letters">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+         <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required pattern=".{6,}" title="password must contain at least 6 characters">
+        <button type="submit" class="button">Create Account</button>
+        <button type="button" class="ovalButton" onclick="goToPage('Index.html')">Back</button>
+    </form>
+    <footer class="footer">
+        <img src="pics/logo2.png" alt="Pet Society">
+    </footer>
+    <script>
+        const goBack = () => {
+            // Add your logic to go back
+            alert("Going back");
+        };
+
+        const clearFields = () => {
+            document.getElementById('id').value = '';
+            document.getElementById('first-name').value = '';
+            document.getElementById('last-name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('city').value = '';
+            document.getElementById('password').value = '';
+        };
+
+        const onSubmit = (e) => {
+            e.preventDefault();
+            const id = document.getElementById('id').value;
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const city = document.getElementById('city').value;
+            const password = document.getElementById('password').value;
+            const idRegex = /^\d{9}$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const nameRegex = /^[A-Za-z]+$/;
+            const passwordRegex = /^.{6,}$/;
+            let isValid = true;
+
+            if (!id || !firstName || !lastName || !email || !city || !password) {
+                alert("Please fill in all fields.");
+                isValid = false;
+            }
+
+            if (!id.match(idRegex)) {
+                alert("ID must be 9 digits.");
+                isValid = false;
+            }
+
+            if (!email.match(emailRegex)) {
+                alert("Please enter a valid email address.");
+                isValid = false;
+            }
+
+            if (!firstName.match(nameRegex)) {
+                alert("First name must contain only letters.");
+                isValid = false;
+            }
+
+            if (!lastName.match(nameRegex)) {
+                alert("Last name must contain only letters.");
+                isValid = false;
+            }
+
+             if (!password.match(passwordRegex)) {
+                alert("password must contain at least 6 characters.");
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Validation passed. Account created successfully.");
+                clearFields();
+            }
+        };
+
+        document.getElementById('create-account-form').addEventListener('submit', onSubmit);
+    </script>
+
+<script src="goToPage.js"></script>
+
+</body>
+</html>

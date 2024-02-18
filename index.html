@@ -2,9 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pet Society Sign In/Sign Up</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Generic%20form.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="ovalButton.css">
+
+    <style>
+
+        .footer img {
+            animation: bounce 2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Jumping photo animation */
+            width: 400px;
+            height: auto;
+        }
+
+        /* animation bounce */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .show-password-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding-bottom: 20px;
+            color: #333;
+            font-family: 'spoofTrial-Regular', sans-serif;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
+            z-index: 9999;
+            display: none;
+        }
+
+        .popup button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+        }
+
+    </style>
 </head>
 <body>
+
+<header></header>
+
+<div class="container">
+
+    <form id="signin-form" onsubmit="validateForm(event)">
+        <h1>Welcome!</h1>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" class="show-password-button" onclick="togglePasswordVisibility()">Show Password</button>
+        <br>
+        <button type="submit" class="button" onclick="login()">Log In</button>
+        <button type="button" class="ovalButton" onclick="goToPage('CreateAccount.html')">Create Account</button>
+    </form>
+</div>
+
+<p id="privacy-link">Press keys shift+P for privacy policy</p>
+
+<!-- Pop-up message -->
+<div id="popupMessage" class="popup">
+    <button onclick="closePopup()">X</button>
+    <h2>Privacy Policy</h2>
+    <p>This website uses cookies to ensure you get the best experience on our website.</p>
+</div>
+
+<footer class="footer">
+    <img src="pics/logo2.png" alt="Pet Society">
+</footer>
+
+<script>
+
+
+ document.addEventListener('keydown', function(event) {
+    if (event.shiftKey && event.key === 'P') {
+        document.getElementById('popupMessage').style.display = 'block';
+    }
+});
+
+    // Function to close the pop-up message
+    function closePopup() {
+        document.getElementById('popupMessage').style.display = 'none';
+    }
+
+    // form validation function
+    function validateForm(event) {
+        // Check if the login button was clicked
+        if (event.submitter.classList.contains('button')) {
+            // Perform validation
+
+        }
+    }
+    // Function to show password
+    function togglePasswordVisibility() {
+    var passwordField = document.getElementById("password");
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
+</script>
+
+<script src="goToPage.js"></script>
 
 </body>
 </html>

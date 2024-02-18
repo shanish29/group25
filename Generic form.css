@@ -1,0 +1,26 @@
+
+form {
+    background-color: #d9d6df;
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 16px;
+    width: 60%;
+    margin: 50px auto;
+}
+
+.label-container {
+    margin-bottom: 16px;
+}
+
+.label-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Pets</title>
+
+     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="ovalButton.css">
+
+    <style>
+
+    .container1{
+             display:flex;
+             flex-direction: row;
+             align-items: center;
+             justify-content: space-around;
+             margin-bottom: 20px;
+
+    }
+
+    .container2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 20px;
+    }
+
+    .container3  {
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+    }
+
+    .image-container1 {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 10px;
+    }
+
+    .image-container2 {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+    }
+
+    .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+    }
+
+    .button {
+            display: block;
+            width: 20%;
+            padding: 10px;
+            background-color: #666f5a;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+    }
+
+    .image2 {
+            width: 30%;
+            height: 30%;
+            object-fit: cover;
+    }
+
+    .footer img {
+            width: 200px;
+            height: auto;
+    }
+    </style>
+
+</head>
+<body>
+
+<header></header>
+
+    <div class="container1">
+        <div class="image-container1">
+            <img class="image" src="pics/golda.jpg" alt="golda">
+        </div>
+
+        <div class="image-container2">
+            <img class="image" src="pics/chubby.jpg" alt="Chubby">
+        </div>
+    </div>
+
+    <div class="container2">
+        <button class="button" onclick="goToPage('PetProfile.html')">Golda's Profile</button>
+        <button class="button" onclick="goToPage('PetProfile.html')">Chubby's Profile</button>
+    </div>
+
+    <div class="container3">
+        <button class="button" onclick="goToPage('Booked Appointments.html')">Booked Appointments</button>
+        <button class="button" onclick="goToPage('AddPet.html')">Add a new pet!</button>
+    </div>
+
+</body>
+
+<footer class="footer">
+ <img class="image2" src="pics/logo3.png" alt="Pet Society">
+    <button type="submit" class="ovalButton" onclick="goToPage('Index.html')">Back</button>
+</footer>
+
+<script src="goToPage.js"></script>
+
+</html>

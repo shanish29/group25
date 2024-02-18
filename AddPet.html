@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Pet</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Generic%20form.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="ovalButton.css">
+
+    <style>
+        .footer img {
+            width: 400px;
+            height: auto;
+        }
+    </style>
+
+</head>
+<body>
+
+    <header></header>
+
+    <form id="add-pet-form" onsubmit="return validateAddPetForm()">
+        <h1>Add Pet</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <label for="animal-type">Animal Type:</label>
+        <input type="text" id="animal-type" name="animal-type" list="animal-types" required oninput="validateAnimalType()">
+
+        <!--animal type lookup table-->
+        <datalist id="animal-types">
+            <option value="Dog"></option>
+            <option value="Cat"></option>
+            <option value="Bird"></option>
+            <option value="Fish"></option>
+            <option value="Rabbit"></option>
+            <option value="Hamster"></option>
+            <option value="Guinea Pig"></option>
+            <option value="Turtle"></option>
+            <option value="Snake"></option>
+            <option value="Lizard"></option>
+            <option value="Horse"></option>
+        </datalist>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" required list="breed-options">
+
+        <!--breed lookup table-->
+        <datalist id="breed-options">
+        </datalist>
+
+        <label for="chip">Chip:</label>
+        <input type="text" id="chip" name="chip" required>
+        <label for="allergies">Allergies:</label>
+        <textarea id="allergies" name="allergies" maxlength="200" required></textarea>
+        <button type="submit" class="button">Add Pet</button>
+        <button type="button" class="ovalButton" onclick="goToPage('MyPets.html')">Back</button>
+    </form>
+
+    <footer class="footer">
+        <img src="pics/logo2.png" alt="Pet Society">
+    </footer>
+
+    <script>
+
+        const clearFields = () => {
+            document.getElementById('name').value = '';
+            document.getElementById('age').value = '';
+            document.getElementById('animal-type').value = '';
+            document.getElementById('breed').value = '';
+            document.getElementById('chip').value = '';
+            document.getElementById('allergies').value = '';
+        };
+
+        const validateAnimalType = () => {
+            const animalTypeInput = document.getElementById('animal-type');
+            const animalTypesList = document.getElementById('animal-types');
+            const isValidAnimalType = Array.from(animalTypesList.options).some(option => option.value === animalTypeInput.value);
+
+            if (!isValidAnimalType) {
+                alert('Please select a valid animal type from the list.');
+                animalTypeInput.value = '';
+            }
+
+            // Call the validateBreedLookup function when the animal type is changed
+            validateBreedLookup();
+        };
+
+        const validateAddPetForm = () => {
+            const nameInput = document.getElementById('name');
+            const ageInput = document.getElementById('age');
+            const animalTypeInput = document.getElementById('animal-type');
+            const breedInput = document.getElementById('breed');
+            const chipInput = document.getElementById('chip');
+            const allergiesInput = document.getElementById('allergies');
+
+
+            if (!nameInput.value.match(/^[A-Za-z]+$/)) {
+                alert('Name must contain only letters.');
+                return false;
+            }
+
+            const age = parseInt(ageInput.value);
+            if (isNaN(age) || age < 0 || age > 120) {
+                alert('Age must be between 0 and 120.');
+                return false;
+            }
+
+            validateAnimalType();
+            alert('Validation passed. Pet added successfully.');
+            clearFields();
+
+            return false;
+        };
+
+    </script>
+
+<!--calling Function 1- matches a breed lookup table to the animal type chosen-->
+<script src="Function%201.js"></script>
+<script src="goToPage.js"></script>
+
+</body>
+</html>
