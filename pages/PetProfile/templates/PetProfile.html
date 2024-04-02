@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pet Profile</title>
+
+    <link rel="stylesheet" href="../../../static/CSS/styles.css">
+    <link rel="stylesheet" href="../../../static/Generic%20form.css">
+    <link rel="stylesheet" href="../../../static/CSS/button.css">
+    <link rel="stylesheet" href="../../../static/CSS/ovalButton.css">
+
+    <style>
+
+        .rectangular-button {
+            border-radius: 15px;
+            width: 120px;
+            height: 60px;
+            display: inline-block;
+            margin: 0 20px;
+            background-color: #666f5a;
+            color: #fff;
+            font-family: SpoofTrial-Regular, sans-serif;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        .footer img {
+            width: 400px;
+            height: auto;
+        }
+
+        .footer button {
+            background-color: #666f5a;
+            color: #fff;
+            font-family: SpoofTrial-Regular, sans-serif;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+
+  #displayInfo {
+    margin-left: 130px;
+    padding: 20px;
+    padding-left: 120px;
+
+  }
+
+  .button-container, h1 {
+    margin-left: 50px;
+    padding: 20px;
+    padding-left: 120px;
+
+  }
+
+  footer {
+    margin-left: 190px;
+    padding: 20px;
+    padding-left: 120px;
+
+  }
+    </style>
+
+</head>
+<body>
+
+<header></header>
+
+<div class="navbar">
+  <a href="../../index/templates/index.html">Home</a>
+  <a href="../../MyPets/templates/MyPets.html">My Pets</a>
+  <a href="../../AddPet/templates/AddPet.html">Add Pet</a>
+  <a href="../../../Templates/Booked%20Appointments.html">Booked Appointments</a>
+  <a href="../../Reminders/templates/Reminders.html">Reminders</a>
+</div>
+
+<h1>Chubby's Profile</h1>
+
+<div id="displayImage"></div>
+<div id="displayInfo"></div>
+
+<div class="button-container">
+    <button onclick="goToPage('Book Appointment.html')" class="rectangular-button">Book Appointment</button>
+    <button onclick="goToPage('Appointments History.html')" class="rectangular-button">View History</button>
+    <button onclick="goToPage('Reminders.html')" class="rectangular-button">Set Reminders</button>
+</div>
+
+<script>
+    function displayPetInfo() {
+        const displayInfo = document.getElementById('displayInfo');
+        const Name = 'Chubby';
+        const Age = '3 years';
+        const Gender = 'Male';
+        const AnimalType = 'Cat';
+        const Breed = 'Domestic Shorthair';
+        const Chip = '123456789';
+        const Allergies = 'None';
+
+        const petInfoHTML = `
+            <p><strong>Name:</strong> ${Name}</p>
+            <p><strong>Age:</strong> ${Age}</p>
+            <p><strong>Gender:</strong> ${Gender}</p>
+            <p><strong>Animal Type:</strong> ${AnimalType}</p>
+            <p><strong>Breed:</strong> ${Breed}</p>
+            <p><strong>Chip:</strong> ${Chip}</p>
+            <p><strong>Allergies:</strong> ${Allergies}</p>
+        `;
+
+        displayInfo.innerHTML = petInfoHTML;
+    }
+
+    window.onload = displayPetInfo;
+</script>
+
+</body>
+
+<footer class="footer">
+    <img src="../../index/static/media/logo2.png" alt="Pet Society">
+    <button type="submit" class="ovalButton" onclick="goToPage('MyPets.html')">Back</button>
+</footer>
+
+<script src="../../../static/js/goToPage.js"></script>
+
+</html>

@@ -1,0 +1,8 @@
+Libraries:
+Flask
+jinja2
+certifi
+dnspython
+pip
+pymongo
+python-dotenv

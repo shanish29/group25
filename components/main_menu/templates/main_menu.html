@@ -1,0 +1,30 @@
+ <link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main_menu.css') }}" />
+
+{%
+set menu_items = {
+'index': '/',
+'AddPet': url_for('AddPet.index'),
+'AppointmentsHistory': url_for('AppointmentsHistory.index'),
+'BookAppointment': url_for('BookAppointment.index'),
+'BookedAppointments': url_for('BookedAppointments.index'),
+'CreateAccount': url_for('CreateAccount.index'),
+'MyPets': url_for('MyPets.index'),
+'PetProfile': url_for('PetProfile.index'),
+'Reminders': url_for('Reminders.index'),
+
+
+
+
+
+}
+%}
+
+{% for item in menu_items %}
+<li>
+    <a href="{{ menu_items[item] }}" {% if menu_items[item]==request.path %} class="active" {% endif %}>{{ item |
+        capitalize }}</a>
+</li>
+{% endfor %}
+
+
+

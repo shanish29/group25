@@ -1,0 +1,61 @@
+{% extends 'basePage.html' %}
+
+{% set page_head_title = 'Pet Society Sign In/Sign Up' %}
+
+{% set page_title = 'Sign In' %}
+
+{% block page_head_meta %}{% end block %}
+
+
+<link rel="stylesheet" href="{{ url_for('index.static', filename='css/index.css') }}" />
+{% block page_head_css %}{% endblock %}
+
+{% block page_body_main_content %}
+
+  <div class="label">
+    <p class="bubble-info">Located in Dizingoff TLV.
+        Become part of Pet Society Vet and join a community of humans and pets
+        focused on the health and wellbeing of our fur kids.
+    </p>
+  </div>
+
+
+<div class="container">
+
+    <form id="signin-form" onsubmit="validateForm(event)">
+        <h1>Welcome!</h1>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" class="show-password-button" onclick="togglePasswordVisibility()">Show Password</button>
+        <br>
+        <button type="submit" class="button" onclick="login()">Log In</button>
+        <button type="button" class="ovalButton" onclick="goToPage('CreateAccount.html')">Create Account</button>
+    </form>
+</div>
+
+<p id="privacy-link">Press keys shift+P for privacy policy</p>
+
+<!-- Pop-up message -->
+<div id="popupMessage" class="popup">
+    <button onclick="closePopup()">X</button>
+    <h2>Privacy Policy</h2>
+    <p>This website uses cookies to ensure you get the best experience on our website.</p>
+</div>
+
+
+{% endblock %}
+
+{% block page_body_footer %}
+<footer class="footer">
+<img src="{{ url_for('index.static', filename='media/logo2.png') }}" alt="Pet Society">
+</footer>
+{% endblock %}
+
+{% block page_body_js %}
+
+<script src="{{ url_for('index.static', filename='js/index.js') }}"></script>
+
+{% endblock %}

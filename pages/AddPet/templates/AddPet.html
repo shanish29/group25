@@ -1,0 +1,107 @@
+{% extends 'basePage.html' %}
+
+{% set page_head_title = 'Add Pet' %}
+
+{% set page_title = 'Add Pet' %}
+
+{% block page_head_meta %}{% endblock %}
+
+
+<link rel="stylesheet" href="{{ url_for('AddPet.static', filename='css/AddPet.css') }}" />
+{% block page_head_css %}{% endblock %}
+
+{% block page_body_main_content %}
+
+<div class="err-msg">
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+</div>
+
+    <form id="add-pet-form" onsubmit="return validateAddPetForm()">
+        <h1>Add Pet</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <label for="animalType">Animal Type:</label>
+        <input type="text" id="animalType" name="animalType" list="animalTypes" required oninput="validateAnimalType()">
+
+        <!--animal type lookup table-->
+        <datalist id="animalTypes">
+            <option value="Dog"></option>
+            <option value="Cat"></option>
+            <option value="Bird"></option>
+            <option value="Fish"></option>
+            <option value="Rabbit"></option>
+            <option value="Hamster"></option>
+            <option value="Guinea Pig"></option>
+            <option value="Turtle"></option>
+            <option value="Snake"></option>
+            <option value="Lizard"></option>
+            <option value="Horse"></option>
+        </datalist>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" required list="breed-options">
+
+        <!--breed lookup table-->
+        <datalist id="breed-options">
+        </datalist>
+
+        <label for="chip">Chip:</label>
+        <input type="text" id="chip" name="chip" required>
+        <label for="allergies">Allergies:</label>
+        <textarea id="allergies" name="allergies" maxlength="200" required></textarea>
+        <button type="submit" class="button">Add Pet</button>
+        <button type="button" class="ovalButton" onclick="goToPage('MyPets.html')">Back</button>
+    </form>
+
+{% endblock %}
+
+
+{% block page_body_footer %}
+<footer class="footer">
+<img src="{{ url_for('AddPet.static', filename='media/logo2.png') }}" alt="Pet Society">
+</footer>
+{% endblock %}
+
+
+
+{% block page_body_js %}
+<script src="{{ url_for('AddPet.static', filename='js/AddPet.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
